@@ -3,6 +3,7 @@
 	"author": "Khadija T",
 	"description": "A project about backend development & API using nodejs and Express",
 	"keywords": [ "nodejs", "express", "javascript", "freecodecamp" ],
+	"license": "MIT",
 	"dependencies": {
 		"express": "^4.14.0"
 	},
