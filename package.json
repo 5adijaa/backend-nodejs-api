@@ -2,12 +2,16 @@
 	"name": "fcc-learn-npm-package-json",
 	"author": "Khadija T",
 	"description": "A project about backend development & API using nodejs and Express",
-	"keywords": [ "nodejs", "express", "javascript", "freecodecamp" ],
+	"keywords": [
+		"nodejs",
+		"express",
+		"javascript",
+		"freecodecamp"
+	],
 	"license": "MIT",
 	"version": "1.2.0",
 	"dependencies": {
-		"express": "^4.14.0",
-		"moment": "^2.10.2"
+		"express": "^4.14.0"
 	},
 	"main": "server.js",
 	"scripts": {
