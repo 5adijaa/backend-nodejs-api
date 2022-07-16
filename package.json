@@ -2,6 +2,7 @@
 	"name": "fcc-learn-npm-package-json",
 	"author": "Khadija T",
 	"description": "A project about backend development & API using nodejs and Express",
+	"keywords": [ "nodejs", "express", "javascript", "freecodecamp" ],
 	"dependencies": {
 		"express": "^4.14.0"
 	},
