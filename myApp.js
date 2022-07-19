@@ -19,14 +19,12 @@ app.get('/now', (req, res, next)=>{
   res.send({time: req.time})
 }) 
 
-app.get('/', (req, res) => {
-  // res.send('Hello Express')
-  const absolutePath = __dirname + '/views/index.html'
-  console.log(absolutePath)
-  res.sendFile(absolutePath)
+app.get('/:word/echo', (req, res)=>{
+  const {word} = req.params
+  res.send({echo: word})
 })
 
-console.log('MESSAGE_STYLE ', process.env.MESSAGE_STYLE)
+// console.log('MESSAGE_STYLE ', process.env.MESSAGE_STYLE)
 
 app.get('/json', (req, res)=>{
   const response = process.env.MESSAGE_STYLE === 'uppercase' ? 'Hello json'.toUpperCase() : 'Hello json'
@@ -37,6 +35,13 @@ app.get('/json', (req, res)=>{
   //   response = 'Hello json'
   // }
   res.send({'message': response})
+})
+
+app.get('/', (req, res) => {
+  // res.send('Hello Express')
+  const absolutePath = __dirname + '/views/index.html'
+  console.log(absolutePath)
+  res.sendFile(absolutePath)
 })
 
 
