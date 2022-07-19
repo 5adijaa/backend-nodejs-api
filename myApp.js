@@ -11,6 +11,14 @@ app.use(function(req, res, next){
   console.log(`${req.method} ${req.path} - ${req.ip}`)
   next()
 })
+
+app.get('/now', (req, res, next)=>{
+  req.time = new Date().toString()
+  next()
+}, (req, res)=>{
+  res.send({time: req.time})
+}) 
+
 app.get('/', (req, res) => {
   // res.send('Hello Express')
   const absolutePath = __dirname + '/views/index.html'
