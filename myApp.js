@@ -25,8 +25,10 @@ app.get('/:word/echo', (req, res)=>{
 })
 
 app.get('/name', (req,res)=>{
-  let firstName = req.query.first
-  let lastName = req.query.last
+  // let firstName = req.query.first
+  // let lastName = req.query.last
+  // -> Using object destructuring syntax
+  let {first: firstName, last: lastName} = req.query
   const name = firstName + ' ' + lastName
   res.send({name: name})
 })
