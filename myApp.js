@@ -4,12 +4,29 @@ let app = express();
 
 console.log('Hello World')
 
+const bodyParser = require('body-parser')
+app.use(bodyParser.urlencoded({extended: false}))
 
 app.use('/public', express.static(__dirname + '/public'));
 
 app.use(function(req, res, next){
   console.log(`${req.method} ${req.path} - ${req.ip}`)
   next()
+})
+
+app.post('/name', (req, res)=>{
+  let {first: firstName, last: lastName} = req.body
+  const name = firstName + ' ' + lastName
+  res.send({name: name})
+})
+
+app.get('/name', (req,res)=>{
+  // let firstName = req.query.first
+  // let lastName = req.query.last
+  // -> Using object destructuring syntax
+  let {first: firstName, last: lastName} = req.query
+  const name = firstName + ' ' + lastName
+  res.send({name: name})
 })
 
 app.get('/now', (req, res, next)=>{
@@ -22,15 +39,6 @@ app.get('/now', (req, res, next)=>{
 app.get('/:word/echo', (req, res)=>{
   const {word} = req.params
   res.send({echo: word})
-})
-
-app.get('/name', (req,res)=>{
-  // let firstName = req.query.first
-  // let lastName = req.query.last
-  // -> Using object destructuring syntax
-  let {first: firstName, last: lastName} = req.query
-  const name = firstName + ' ' + lastName
-  res.send({name: name})
 })
 
 // console.log('MESSAGE_STYLE ', process.env.MESSAGE_STYLE)
