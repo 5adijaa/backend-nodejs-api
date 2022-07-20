@@ -1,65 +1,70 @@
-require('dotenv').config()
-let express = require('express');
-let app = express();
-
-console.log('Hello World')
-
-const bodyParser = require('body-parser')
-app.use(bodyParser.urlencoded({extended: false}))
-
-app.use('/public', express.static(__dirname + '/public'));
-
-app.use(function(req, res, next){
-  console.log(`${req.method} ${req.path} - ${req.ip}`)
-  next()
-})
-
-app.post('/name', (req, res)=>{
-  let {first: firstName, last: lastName} = req.body
-  const name = firstName + ' ' + lastName
-  res.send({name: name})
-})
-
-app.get('/name', (req,res)=>{
-  // let firstName = req.query.first
-  // let lastName = req.query.last
-  // -> Using object destructuring syntax
-  let {first: firstName, last: lastName} = req.query
-  const name = firstName + ' ' + lastName
-  res.send({name: name})
-})
-
-app.get('/now', (req, res, next)=>{
-  req.time = new Date().toString()
-  next()
-}, (req, res)=>{
-  res.send({time: req.time})
-}) 
-
-app.get('/:word/echo', (req, res)=>{
-  const {word} = req.params
-  res.send({echo: word})
-})
-
-// console.log('MESSAGE_STYLE ', process.env.MESSAGE_STYLE)
-
-app.get('/json', (req, res)=>{
-  const response = process.env.MESSAGE_STYLE === 'uppercase' ? 'Hello json'.toUpperCase() : 'Hello json'
-  // let response 
-  // if(process.env.MESSAGE_STYLE === 'uppercase'){
-  //   response = 'Hello json'.toUpperCase()
-  // }else{
-  //   response = 'Hello json'
-  // }
-  res.send({'message': response})
-})
-
-app.get('/', (req, res) => {
-  // res.send('Hello Express')
-  const absolutePath = __dirname + '/views/index.html'
-  console.log(absolutePath)
-  res.sendFile(absolutePath)
-})
+require('dotenv').config();
 
 
-module.exports = app
+let Person;
+
+const createAndSavePerson = (done) => {
+  done(null /*, data*/);
+};
+
+const createManyPeople = (arrayOfPeople, done) => {
+  done(null /*, data*/);
+};
+
+const findPeopleByName = (personName, done) => {
+  done(null /*, data*/);
+};
+
+const findOneByFood = (food, done) => {
+  done(null /*, data*/);
+};
+
+const findPersonById = (personId, done) => {
+  done(null /*, data*/);
+};
+
+const findEditThenSave = (personId, done) => {
+  const foodToAdd = "hamburger";
+
+  done(null /*, data*/);
+};
+
+const findAndUpdate = (personName, done) => {
+  const ageToSet = 20;
+
+  done(null /*, data*/);
+};
+
+const removeById = (personId, done) => {
+  done(null /*, data*/);
+};
+
+const removeManyPeople = (done) => {
+  const nameToRemove = "Mary";
+
+  done(null /*, data*/);
+};
+
+const queryChain = (done) => {
+  const foodToSearch = "burrito";
+
+  done(null /*, data*/);
+};
+
+/** **Well Done !!**
+/* You completed these challenges, let's go celebrate !
+ */
+
+//----- **DO NOT EDIT BELOW THIS LINE** ----------------------------------
+
+exports.PersonModel = Person;
+exports.createAndSavePerson = createAndSavePerson;
+exports.findPeopleByName = findPeopleByName;
+exports.findOneByFood = findOneByFood;
+exports.findPersonById = findPersonById;
+exports.findEditThenSave = findEditThenSave;
+exports.findAndUpdate = findAndUpdate;
+exports.createManyPeople = createManyPeople;
+exports.removeById = removeById;
+exports.removeManyPeople = removeManyPeople;
+exports.queryChain = queryChain;
