@@ -24,6 +24,13 @@ app.get('/:word/echo', (req, res)=>{
   res.send({echo: word})
 })
 
+app.get('/name', (req,res)=>{
+  let firstName = req.query.first
+  let lastName = req.query.last
+  const name = firstName + ' ' + lastName
+  res.send({name: name})
+})
+
 // console.log('MESSAGE_STYLE ', process.env.MESSAGE_STYLE)
 
 app.get('/json', (req, res)=>{
