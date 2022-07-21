@@ -48,7 +48,7 @@ const findPeopleByName = (personName, done) => {
 };
 
 const findOneByFood = (food, done) => {
-  Person.findOne({ favoriteFoods: food }, (err,data)=>{
+  Person.findOne({ favouriteFoods: food }, (err,data)=>{
     if (err) return done(err)
     done(null, data)
   })
@@ -65,7 +65,7 @@ const findEditThenSave = (personId, done) => {
   const foodToAdd = "hamburger";
   Person.findById(personId, (err,person)=>{
     if (err) return done(err)
-    person.favoriteFoods.push(foodToAdd)
+    person.favouriteFoods.push(foodToAdd)
     person.save()
     .then(doc=>{
       console.log(doc)
@@ -111,8 +111,17 @@ const removeManyPeople = (done) => {
 
 const queryChain = (done) => {
   const foodToSearch = "burrito";
-
-  done(null /*, data*/);
+  Person
+  .find({favouriteFoods: foodToSearch})
+  .sort('name')
+  .limit(2)
+  // .select({'name':1, 'favouriteFoods': 1})
+  .select('name favouriteFoods')
+  .exec((err, person)=>{
+    if (err) return done(err)
+    console.log(person)
+    done(null, person)
+  })
 };
 
 /** **Well Done !!**
