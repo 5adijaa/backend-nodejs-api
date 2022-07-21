@@ -1,10 +1,8 @@
 require('dotenv').config();
 
 const mongoose = require('mongoose')
-const {Schema} = mongoose
 
-
-const personSchema = new Schema({
+const personSchema = new mongoose.Schema({
   name: {type: String, required: true},
   age: Number,
   favouriteFoods: [String]
